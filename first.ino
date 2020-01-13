@@ -18,7 +18,7 @@ void loop(){unsigned char blkCnt=0;
             digitalWrite(robo.lMF,1);
             digitalWrite(robo.rMF,1);
             delay(150);
-            if(blkCnt==5) break;
+            if(blkCnt==8) break;
             else continue;
         }
         digitalRead(8)? digitalWrite(robo.rMF,0):digitalWrite(robo.rMF,1);
