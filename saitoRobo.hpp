@@ -10,6 +10,7 @@ public:
         lMF = lF;
         lMR = lR;
         Ball = B;
+        digitalWrite(B,0);
     }
     void turnRight(){
         digitalWrite(lMF,1);
