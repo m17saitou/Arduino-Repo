@@ -10,7 +10,6 @@ public:
         lMF = lF;
         lMR = lR;
         Ball = B;
-        digitalWrite(B,0);
     }
     void turnRight(){
         digitalWrite(lMF,1);
@@ -27,9 +26,11 @@ public:
         digitalWrite(lMR,0);
     }
     void ballShot(){
-        digitalWrite(Ball,1);
+        digitalWrite(11,0);
+        digitalWrite(10,0);
         delay(2000);
-        digitalWrite(Ball,0);
+        digitalWrite(Ball,1);
+        digitalWrite(11,1);
     }
     int rMF,
         rMR,

@@ -12,8 +12,8 @@ void setup(){
 
 void loop(){unsigned char blkCnt=0;
 	SaitoRobo robo = SaitoRobo(2,3,5,4,10);
-    digitalWrite(10,1);
     digitalWrite(11,1);
+    digitalWrite(10,1);
 	while(1){
         if(digitalRead(8)&&digitalRead(9)){
             blkCnt++;
@@ -30,24 +30,15 @@ void loop(){unsigned char blkCnt=0;
 	robo.turnLeft();
     digitalWrite(robo.lMF,1);
     digitalWrite(robo.rMF,1);
-    delay(1200);
+    delay(950);
     robo.turnRight();
     digitalWrite(robo.lMF,1);
     digitalWrite(robo.rMF,1);
-    delay(1200);
+    delay(1150);
     digitalWrite(robo.lMF,0);
     digitalWrite(robo.rMF,0);
     robo.ballShot();
     digitalWrite(robo.lMR,1);
     digitalWrite(robo.rMR,1);
     delay(1000);
-    digitalWrite(robo.rMR,0);
-    digitalWrite(robo.lMR,0);
-    robo.turnRight();
-    while(1){
-        if(digitalRead(8)&&digitalRead(9))robo.turnRight();
-        digitalRead(8)? digitalWrite(robo.rMF,0):digitalWrite(robo.rMF,1);
-        digitalRead(9)? digitalWrite(robo.lMF,0):digitalWrite(robo.lMF,1);
-        delay(80);
-    }    
 }
