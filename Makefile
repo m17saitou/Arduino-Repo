@@ -1,6 +1,9 @@
+BOARDS_TXT = /usr/share/arduino/hardware/archlinux-arduino/avr/boards.txt
+
 BOARD_TAG = nano328
 MONITOR_PORT = /dev/ttyUSB0 #Arduino Divice Path
 MONITOR_BAUDRATE 	= 115200
+MCU = atmega328
 include /usr/share/arduino/Arduino.mk
 
 # ----- How to Writing Program to Arduino Nano -----
