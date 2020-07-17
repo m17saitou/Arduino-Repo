@@ -1,0 +1,14 @@
+#include "kasagonLCD.hpp"
+//PIN 6 = Serial-Data   =White
+//PIN 4 = Serial Clock  =Green
+//PIN 2 = Ratch Clock   =Yellow
+
+void setup(){
+    pinMode(6,OUTPUT);
+    pinMode(4,OUTPUT);
+    pinMode(2,OUTPUT);
+}
+
+void loop(){
+    
+}

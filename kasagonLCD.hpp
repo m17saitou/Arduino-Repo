@@ -1,0 +1,4 @@
+#ifndef KASAGONLCD
+#define KASAGONLCD
+
+#endif //KASAGONLCD
