@@ -11,6 +11,7 @@ void setup(){
 }
 
 void loop(){
+    digitalWrite(2,HIGH);
     char str[6]={"hello"};
     for(int i:str){
         digitalWrite(2,HIGH);
