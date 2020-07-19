@@ -33,5 +33,5 @@ void initLCD(){
     }
     digitalWrite(2,HIGH);
     digitalWrite(2,LOW);
-    delay(15);
+    delay(100);
 }
