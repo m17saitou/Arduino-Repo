@@ -25,13 +25,35 @@ void loop(){
 }
 
 void initLCD(){
+    delay(40);
     digitalWrite(2,LOW);
     for(int8_t i=0;i<8;i++){
         digitalWrite(4,LOW);
-        digitalWrite(6,0b00111100&0b00000001<<i);
+        digitalWrite(6,0b00111100&0b10000000>>i);
         digitalWrite(4,HIGH);
     }
     digitalWrite(2,HIGH);
     digitalWrite(2,LOW);
-    delay(100);
+    delay(40);
+    for(int8_t i=0;i<8;i++){
+        digitalWrite(4,LOW);
+        digitalWrite(6,0b11110000&0b10000000>>i);
+        digitalWrite(4,HIGH);
+    }
+    digitalWrite(2,HIGH);
+    digitalWrite(2,LOW);
+    delay(4);
+    for(int8_t i=0;i<8;i++){
+        digitalWrite(4,LOW);
+        digitalWrite(6,0b10000000&0b10000000>>i);
+        digitalWrite(4,HIGH);
+    }
+    digitalWrite(2,HIGH);
+    digitalWrite(2,LOW);
+    delay(44);
+    for(int8_t i=0;i<8;i++){
+        digitalWrite(4,LOW);
+        digitalWrite(6,0b01100000&0b10000000>>i);
+        digitalWrite(4,HIGH);
+    }
 }
