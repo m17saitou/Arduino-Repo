@@ -17,7 +17,7 @@ void loop(){
         digitalWrite(2,LOW);
         for(int8_t bit=0;bit<8;bit++){
             digitalWrite(4,LOW);
-            digitalWrite(6,str[i]&0b00000001<<bit);
+            digitalWrite(6,str[i]&0b10000000>>bit);
             digitalWrite(4,HIGH);
         }
         digitalWrite(2,HIGH);
