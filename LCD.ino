@@ -1,11 +1,14 @@
+//PIN 8 = LCD Resister  =purple
 //PIN 6 = Serial-Data   =White
 //PIN 4 = Serial Clock  =Green
 //PIN 2 = Ratch Clock   =Yellow
 void initLCD();
 void setup(){
+    pinMode(8,OUTPUT);
     pinMode(6,OUTPUT);
     pinMode(4,OUTPUT);
     pinMode(2,OUTPUT);
+    digitalWrite(8,LOW);
     initLCD();
 }
 
@@ -13,16 +16,20 @@ void loop(){
     char str[6]={"hello"};
     for(int i:str){
         digitalWrite(2,LOW);
+        delay(2);
+        digitalWrite(8,LOW);
         for(int8_t bit=0;bit<8;bit++){
             digitalWrite(4,LOW);
             digitalWrite(6,str[i]&0b10000000>>bit);
             digitalWrite(4,HIGH);
         }
         digitalWrite(2,HIGH);
+        digitalWrite(8,HIGH);
     }
 }
 
 void initLCD(){
+    digitalWrite(8,LOW);
     digitalWrite(2,LOW);
     for(int8_t i=0;i<8;i++){
         digitalWrite(4,LOW);
