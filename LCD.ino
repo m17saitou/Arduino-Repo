@@ -19,7 +19,7 @@ void setup(){
 
 void loop(){
     digitalWrite(3,HIGH);
-    char str[16]={0xB9,0xDE,0xDD,0xB6,0xB2,0xBA,0xB2,0xCA,0xC2,0xBB,0xCA,0xDE};
+    uint8_t str[16]={0xB9,0xDE,0xDD,0xB6,0xB2,0xB6,0xB2,0xCA,0xC2,0xBB,0xCA,0xDE,' ',' ',' ',' '};
     for(int i=0;i<16;i++){
         digitalWrite(RCLK_E,LOW);
         for(int8_t bit=0;bit<8;bit++){
@@ -48,7 +48,7 @@ void loop(){
         delay(10);
         digitalWrite(RS,LOW);
     }
-    char str2[16]={"Twitter:Kasagone"};
+    char str2[16]={"@UFIAapprovers  "};
     for(int i=0;i<16;i++){
         digitalWrite(RCLK_E,LOW);
         for(int8_t bit=0;bit<8;bit++){
@@ -64,7 +64,7 @@ void loop(){
         digitalWrite(RS,LOW);
     }
     digitalWrite(3,LOW);
-	delay(500);
+	delay(1500);
 	initLCD();
 }
 
