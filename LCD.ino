@@ -3,9 +3,9 @@
 //PIN 6 = Serial-Data   =White
 #define Si 6
 //PIN 4 = Serial Clock  =Yellow
-#define SCLK 4
+#define SCLK 2
 //PIN 2 = Ratch Clock   =Green
-#define RCLK_E 2
+#define RCLK_E 4
 void initLCD();
 void setup(){
     pinMode(RS,OUTPUT);
@@ -45,24 +45,24 @@ void initLCD(){
     digitalWrite(RCLK_E,LOW);
     delay(4);
     for(int8_t i=0;i<8;i++){
-        digitalWrite(4,LOW);
-        digitalWrite(6,0b00010000&0b10000000>>i);
-        digitalWrite(4,HIGH);
+        digitalWrite(SCLK,LOW);
+        digitalWrite(Si,0b00010000&0b10000000>>i);
+        digitalWrite(SCLK,HIGH);
     }
     digitalWrite(2,HIGH);
     digitalWrite(2,LOW);
     delay(4);
     for(int8_t i=0;i<8;i++){
-        digitalWrite(4,LOW);
-        digitalWrite(6,0b10000000&0b10000000>>i);
-        digitalWrite(4,HIGH);
+        digitalWrite(SCLK,LOW);
+        digitalWrite(Si,0b10000000&0b10000000>>i);
+        digitalWrite(SCLK,HIGH);
     }
     digitalWrite(2,HIGH);
     digitalWrite(2,LOW);
     delay(4);
     for(int8_t i=0;i<8;i++){
-        digitalWrite(4,LOW);
-        digitalWrite(6,0b11100000&0b10000000>>i);
-        digitalWrite(4,HIGH);
+        digitalWrite(SCLK,LOW);
+        digitalWrite(Si,0b11100000&0b10000000>>i);
+        digitalWrite(SCLK,HIGH);
     }
 }
