@@ -1,8 +1,6 @@
 //PIN 6 = Serial-Data   =White
 //PIN 4 = Serial Clock  =Green
 //PIN 2 = Ratch Clock   =Yellow
-#define HIGH 1
-#define LOW 0
 void initLCD();
 void setup(){
     pinMode(6,OUTPUT);
@@ -29,7 +27,7 @@ void initLCD(){
     digitalWrite(2,LOW);
     for(int8_t i=0;i<8;i++){
         digitalWrite(4,LOW);
-        digitalWrite(6,0b00111100&0b10000000>>i);
+        digitalWrite(6,0b00001100&0b10000000>>i);
         digitalWrite(4,HIGH);
     }
     digitalWrite(2,HIGH);
@@ -53,7 +51,7 @@ void initLCD(){
     delay(44);
     for(int8_t i=0;i<8;i++){
         digitalWrite(4,LOW);
-        digitalWrite(6,0b01100000&0b10000000>>i);
+        digitalWrite(6,0b11100000&0b10000000>>i);
         digitalWrite(4,HIGH);
     }
 }
