@@ -48,7 +48,7 @@ void loop(){
         delay(10);
         digitalWrite(RS,LOW);
     }
-    char str2[16]={"@UFIAapprovers  "};
+    char str2[16]={"@UFIApprovers   "};
     for(int i=0;i<16;i++){
         digitalWrite(RCLK_E,LOW);
         for(int8_t bit=0;bit<8;bit++){
