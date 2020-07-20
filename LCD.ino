@@ -1,43 +1,48 @@
-//PIN 8 = LCD Resister  =purple
+//PIN 8 = LCD Resister  =purple 
+#define RS 8
 //PIN 6 = Serial-Data   =White
-//PIN 4 = Serial Clock  =Green
-//PIN 2 = Ratch Clock   =Yellow
+#define Si 6
+//PIN 4 = Serial Clock  =Yellow
+#define SCLK 4
+//PIN 2 = Ratch Clock   =Green
+#define RCLK_E 2
 void initLCD();
 void setup(){
-    pinMode(8,OUTPUT);
-    pinMode(6,OUTPUT);
-    pinMode(4,OUTPUT);
-    pinMode(2,OUTPUT);
-    digitalWrite(8,LOW);
+    pinMode(RS,OUTPUT);
+    pinMode(Si,OUTPUT);
+    pinMode(SCLK,OUTPUT);
+    pinMode(RCLK_E,OUTPUT);
+    digitalWrite(RS,LOW);
     initLCD();
 }
 
 void loop(){
     char str[6]={"hello"};
     for(int i:str){
-        digitalWrite(2,LOW);
         delay(2);
-        digitalWrite(8,LOW);
+        digitalWrite(RCLK_E,LOW); 
+        digitalWrite(RS,LOW);
+        delay(2);
         for(int8_t bit=0;bit<8;bit++){
-            digitalWrite(4,LOW);
-            digitalWrite(6,str[i]&0b10000000>>bit);
-            digitalWrite(4,HIGH);
+            digitalWrite(SCLK,LOW);
+            digitalWrite(Si,str[i]&0b10000000>>bit);
+            digitalWrite(SCLK,HIGH);
         }
-        digitalWrite(2,HIGH);
-        digitalWrite(8,HIGH);
+        digitalWrite(RCLK_E,HIGH);
+        digitalWrite(RS,HIGH);
     }
 }
 
 void initLCD(){
-    digitalWrite(8,LOW);
-    digitalWrite(2,LOW);
+    digitalWrite(RS,LOW);
+    digitalWrite(RCLK_E,LOW);
     for(int8_t i=0;i<8;i++){
-        digitalWrite(4,LOW);
-        digitalWrite(6,0b00111100&0b10000000>>i);
-        digitalWrite(4,HIGH);
+        digitalWrite(SCLK,LOW);
+        digitalWrite(Si,0b00111100&0b10000000>>i);
+        digitalWrite(SCLK,HIGH);
     }
-    digitalWrite(2,HIGH);
-    digitalWrite(2,LOW);
+    digitalWrite(RCLK_E,HIGH);
+    digitalWrite(RCLK_E,LOW);
     delay(4);
     for(int8_t i=0;i<8;i++){
         digitalWrite(4,LOW);
