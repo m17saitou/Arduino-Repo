@@ -18,26 +18,22 @@ void setup(){
 }
 
 void loop(){
-    while(1){
-        digitalWrite(3,HIGH);
-        delay(100);
-        digitalWrite(3,LOW);
-        delay(100);
+    digitalWrite(3,HIGH);
+    char str[6]={"hello"};
+    for(int i:str){
+        digitalWrite(RCLK_E,LOW);
+        for(int8_t bit=0;bit<8;bit++){
+            digitalWrite(SCLK,LOW);
+            digitalWrite(Si,str[i]&0b10000000>>bit);
+            digitalWrite(SCLK,HIGH);
+        }
+        digitalWrite(RS,HIGH);
+        digitalWrite(RCLK_E,HIGH);
+        delay(1);
+        digitalWrite(RCLK_E,LOW);
+        delay(1);
+        digitalWrite(RS,LOW);
     }
-    // char str[6]={"hello"};
-    // for(int i:str){
-    //     delay(2);
-    //     digitalWrite(RCLK_E,LOW); 
-    //     digitalWrite(RS,LOW);
-    //     delay(2);
-    //     for(int8_t bit=0;bit<8;bit++){
-    //         digitalWrite(SCLK,LOW);
-    //         digitalWrite(Si,str[i]&0b10000000>>bit);
-    //         digitalWrite(SCLK,HIGH);
-    //     }
-    //     digitalWrite(RCLK_E,HIGH);
-    //     digitalWrite(RS,HIGH);
-    // }
 }
 
 void initLCD(){
