@@ -6,10 +6,10 @@ void setup(){
     pinMode(6,OUTPUT);
     pinMode(4,OUTPUT);
     pinMode(2,OUTPUT);
+    initLCD();
 }
 
 void loop(){
-    initLCD();
     char str[6]={"hello"};
     for(int i:str){
         digitalWrite(2,LOW);
