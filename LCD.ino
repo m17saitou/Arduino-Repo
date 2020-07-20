@@ -19,7 +19,7 @@ void setup(){
 
 void loop(){
     digitalWrite(3,HIGH);
-    char str[16]={"HN : ｶｻｺﾞﾝ"};
+    char str[16]={0xB9,0xDE,0xDD,0xB6,0xB2,0xBA,0xB2,0xCA,0xC2,0xBB,0xCA,0xDE};
     for(int i=0;i<16;i++){
         digitalWrite(RCLK_E,LOW);
         for(int8_t bit=0;bit<8;bit++){
