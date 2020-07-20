@@ -27,12 +27,12 @@ void initLCD(){
     digitalWrite(2,LOW);
     for(int8_t i=0;i<8;i++){
         digitalWrite(4,LOW);
-        digitalWrite(6,0b00110000&0b10000000>>i);
+        digitalWrite(6,0b00001100&0b10000000>>i);
         digitalWrite(4,HIGH);
     }
     digitalWrite(2,HIGH);
     digitalWrite(2,LOW);
-    delay(40);
+    delay(4);
     for(int8_t i=0;i<8;i++){
         digitalWrite(4,LOW);
         digitalWrite(6,0b11110000&0b10000000>>i);
