@@ -23,7 +23,6 @@ void loop(){
 }
 
 void initLCD(){
-    delay(40);
     digitalWrite(2,LOW);
     for(int8_t i=0;i<8;i++){
         digitalWrite(4,LOW);
