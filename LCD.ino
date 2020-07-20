@@ -35,7 +35,7 @@ void loop(){
         digitalWrite(RS,LOW);
         
     }
-    digitaiWrite(3,LOW);
+    digitalWrite(3,LOW);
 
 }
 
