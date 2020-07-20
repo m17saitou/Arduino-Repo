@@ -12,25 +12,32 @@ void setup(){
     pinMode(Si,OUTPUT);
     pinMode(SCLK,OUTPUT);
     pinMode(RCLK_E,OUTPUT);
+    pinMode(3,OUTPUT);
     digitalWrite(RS,LOW);
     initLCD();
 }
 
 void loop(){
-    char str[6]={"hello"};
-    for(int i:str){
-        delay(2);
-        digitalWrite(RCLK_E,LOW); 
-        digitalWrite(RS,LOW);
-        delay(2);
-        for(int8_t bit=0;bit<8;bit++){
-            digitalWrite(SCLK,LOW);
-            digitalWrite(Si,str[i]&0b10000000>>bit);
-            digitalWrite(SCLK,HIGH);
-        }
-        digitalWrite(RCLK_E,HIGH);
-        digitalWrite(RS,HIGH);
+    while(1){
+        digitalWrite(3,HIGH);
+        delay(100);
+        digitalWrite(3,LOW);
+        delay(100);
     }
+    // char str[6]={"hello"};
+    // for(int i:str){
+    //     delay(2);
+    //     digitalWrite(RCLK_E,LOW); 
+    //     digitalWrite(RS,LOW);
+    //     delay(2);
+    //     for(int8_t bit=0;bit<8;bit++){
+    //         digitalWrite(SCLK,LOW);
+    //         digitalWrite(Si,str[i]&0b10000000>>bit);
+    //         digitalWrite(SCLK,HIGH);
+    //     }
+    //     digitalWrite(RCLK_E,HIGH);
+    //     digitalWrite(RS,HIGH);
+    // }
 }
 
 void initLCD(){
