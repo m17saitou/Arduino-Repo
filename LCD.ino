@@ -19,8 +19,8 @@ void setup(){
 
 void loop(){
     digitalWrite(3,HIGH);
-    char str[6]={"hello"};
-    for(int i=0;i<5;i++){
+    char str[16]={"HN : ｶｻｺﾞﾝ"};
+    for(int i=0;i<16;i++){
         digitalWrite(RCLK_E,LOW);
         for(int8_t bit=0;bit<8;bit++){
             digitalWrite(SCLK,LOW);
@@ -33,7 +33,35 @@ void loop(){
         digitalWrite(RCLK_E,LOW);
         delay(10);
         digitalWrite(RS,LOW);
-        
+    }
+    for(int i=0;i<24;i++){
+        digitalWrite(RCLK_E,LOW);
+        for(int8_t bit=0;bit<8;bit++){
+            digitalWrite(SCLK,LOW);
+            digitalWrite(Si,0x00&0b10000000>>bit);
+            digitalWrite(SCLK,HIGH);
+        }
+        digitalWrite(RS,HIGH);
+        digitalWrite(RCLK_E,HIGH);
+        delay(10);
+        digitalWrite(RCLK_E,LOW);
+        delay(10);
+        digitalWrite(RS,LOW);
+    }
+    char str2[16]={"Twitter:Kasagone"};
+    for(int i=0;i<16;i++){
+        digitalWrite(RCLK_E,LOW);
+        for(int8_t bit=0;bit<8;bit++){
+            digitalWrite(SCLK,LOW);
+            digitalWrite(Si,str2[i]&0b10000000>>bit);
+            digitalWrite(SCLK,HIGH);
+        }
+        digitalWrite(RS,HIGH);
+        digitalWrite(RCLK_E,HIGH);
+        delay(10);
+        digitalWrite(RCLK_E,LOW);
+        delay(10);
+        digitalWrite(RS,LOW);
     }
     digitalWrite(3,LOW);
 	delay(500);
