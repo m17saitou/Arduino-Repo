@@ -34,6 +34,7 @@ void loop(){
         delay(1);
         digitalWrite(RS,LOW);
     }
+    digitaiWrite(3,LOW);
 }
 
 void initLCD(){
