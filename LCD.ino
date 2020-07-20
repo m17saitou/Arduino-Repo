@@ -20,7 +20,7 @@ void setup(){
 void loop(){
     digitalWrite(3,HIGH);
     char str[6]={"hello"};
-    for(int i:str){
+    for(int i=0;i<5;i++){
         digitalWrite(RCLK_E,LOW);
         for(int8_t bit=0;bit<8;bit++){
             digitalWrite(SCLK,LOW);
@@ -36,7 +36,8 @@ void loop(){
         
     }
     digitalWrite(3,LOW);
-
+	delay(500);
+	initLCD();
 }
 
 void initLCD(){
@@ -44,7 +45,7 @@ void initLCD(){
     digitalWrite(RCLK_E,LOW);
     for(int8_t i=0;i<8;i++){
         digitalWrite(SCLK,LOW);
-        digitalWrite(Si,0b00111100&0b10000000>>i);
+        digitalWrite(Si,0b00111000&0b10000000>>i);
         digitalWrite(SCLK,HIGH);
     }
     digitalWrite(RCLK_E,HIGH);
@@ -52,7 +53,7 @@ void initLCD(){
     delay(4);
     for(int8_t i=0;i<8;i++){
         digitalWrite(SCLK,LOW);
-        digitalWrite(Si,0b00010000&0b10000000>>i);
+        digitalWrite(Si,0b00001111&0b10000000>>i);
         digitalWrite(SCLK,HIGH);
     }
     digitalWrite(RCLK_E,HIGH);
@@ -60,7 +61,7 @@ void initLCD(){
     delay(4);
     for(int8_t i=0;i<8;i++){
         digitalWrite(SCLK,LOW);
-        digitalWrite(Si,0b10000000&0b10000000>>i);
+        digitalWrite(Si,0b00000001&0b10000000>>i);
         digitalWrite(SCLK,HIGH);
     }
     digitalWrite(RCLK_E,HIGH);
@@ -68,15 +69,10 @@ void initLCD(){
     delay(4);
     for(int8_t i=0;i<8;i++){
         digitalWrite(SCLK,LOW);
-        digitalWrite(Si,0b11100000&0b10000000>>i);
+        digitalWrite(Si,0b00000110&0b10000000>>i);
         digitalWrite(SCLK,HIGH);
     }
     digitalWrite(RCLK_E,HIGH);
     digitalWrite(RCLK_E,LOW);
     delay(4);
-    for(int8_t i=0;i<8;i++){
-        digitalWrite(SCLK,LOW);
-        digitalWrite(Si,0b1100000&0b10000000>>i);
-        digitalWrite(SCLK,HIGH);
-    }
 }
