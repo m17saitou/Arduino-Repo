@@ -1,3 +1,4 @@
+#include "shiftRegister.hpp"
 void setup(){
     pinMode(2,OUTPUT);//Serial Clock
     pinMode(3,OUTPUT);//Ratch Clock
