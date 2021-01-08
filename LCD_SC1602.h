@@ -1,7 +1,7 @@
 #ifndef LCD_SC1602_H
 #define LCD_SC1602_H
 
-#include "shiftRegister.h"
+#include "shiftRegister.hpp"
 class ShiftRegisterUtils;
 class LCD_SC1602 : public ShiftRegisterUtils{
 public:
