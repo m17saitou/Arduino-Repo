@@ -17,33 +17,33 @@ void setup(){
     pinMode(RCLK_E,OUTPUT);
     digitalWrite(RS,LOW);
     LCD_SC1602 lcd(Si,SCLK,RCLK_E,RS);
-    Wire.begin(0x38);
-    Wire.beginTransmission(0x38);
-    Wire.write(0xE1);
-    Wire.write(0x08);
-    Wire.write(0x00);
-    Wire.endTransmission();
+    Wire.begin();
+    // Wire.beginTransmission(0x44);
+    // Wire.write(0x30);
+    // Wire.write(0x6D);
+    // Wire.endTransmission();
     delay(100);
+    Serial.begin(9600);
 }
 
 void loop(){
     LCD_SC1602 lcd(Si,SCLK,RCLK_E,RS);
-    unsigned char sensorData[6];
-    
-    Wire.beginTransmission(0x38);
-    Wire.write(0xAC);
-    Wire.write(0x33);
-    Wire.write(0x00);
+    unsigned char sensorData[7];
+    Wire.beginTransmission(0x44);
+    Wire.write(0x2C);
+    Wire.write(0x06);
     Wire.endTransmission();
-    delay(150);
-    Wire.requestFrom(0x38,6);
-    delay(80);
+    delay(50);
+    Wire.requestFrom(0x44,6);
     for(unsigned char i = 0; Wire.available() > 0; i++)sensorData[i] = Wire.read();
-    unsigned long humidData = ((sensorData[1]<<16) | sensorData[2]<<8 | sensorData[3])>>4;
-    unsigned long tempData = ((sensorData[3]&0x0F<<16) | sensorData[4]<<8) | sensorData[5];
-    float humidValue = (humidData*100)>>20;
-    unsigned long tempValue = ((tempData*200)>>20)-50;
-    String trans = "Temperature:" + String(tempValue) + "     ";
+    // int humidData = (sensorData[0]<<8) + sensorData[1];
+    // int tempData = (sensorData[3]<<8) + sensorData[4];
+    // float humidValue = (humidData*100.0)/65535.0;
+    // float tempValue = ((tempData*175.0)/65535.0)-45.0;
+    float tempValue = ((((sensorData[0] * 256.0) + sensorData[1]) * 175) / 65535.0) - 45;
+    float humidValue = ((((sensorData[3] * 256.0) + sensorData[4]) * 100) / 65535.0);
+    char a = 0b11011111;
+    String trans = "Temp:" + String(tempValue) + a + "C     ";
     unsigned char str[17];
     trans.getBytes(str,17);
     lcd.writeLine(str);
@@ -51,9 +51,11 @@ void loop(){
     unsigned char str2[17];
     trans.getBytes(str2,17);
     lcd.writeLine(str2);
-	delay(1000);
+    Serial.println("humid :\t" + String(humidValue));
+    Serial.println("Temp :\t" + String(tempValue));
+	delay(300);
     // lcd.initializer();
-    // Wire.beginTransmission(0x38);
+    // Wire.beginTransmission(0x44);
     // Wire.write(0xBA);
     // Wire.endTransmission();
     // delay(200);

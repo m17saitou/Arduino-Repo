@@ -12,7 +12,7 @@ public:
         insertData(0b00011100);
         digitalWrite(RESISTER_CLOCK_PIN,LOW);//初期化するシグナルのためにLOWに落とす必要あり
         delay(4);
-        insertData(0b01110000);
+        insertData(0b00110000);
         digitalWrite(RESISTER_CLOCK_PIN,LOW);
         delay(4);
         insertData(0b10000000);
@@ -27,7 +27,7 @@ public:
         insertData(0b00011100);
         digitalWrite(RESISTER_CLOCK_PIN,LOW);//初期化するシグナルのためにLOWに落とす必要あり
         delay(4);
-        insertData(0b01110000);
+        insertData(0b00110000);
         digitalWrite(RESISTER_CLOCK_PIN,LOW);
         delay(4);
         insertData(0b10000000);
@@ -44,9 +44,9 @@ public:
             insertDataInverse(writeToLCD[i]);
             digitalWrite(LCD_RS_PIN,HIGH);
             digitalWrite(RESISTER_CLOCK_PIN,HIGH);
-            delay(10);
+            delay(5);
             digitalWrite(RESISTER_CLOCK_PIN,LOW);
-            delay(10);
+            delay(5);
             digitalWrite(LCD_RS_PIN,LOW);
         }
     };
