@@ -9,6 +9,7 @@ void setup(){
     Wire.beginTransmission(0x38);
     Wire.write(0xE1);
     Wire.write(0x08);
+    
     Wire.write(0x00);
     Wire.endTransmission();
 }
