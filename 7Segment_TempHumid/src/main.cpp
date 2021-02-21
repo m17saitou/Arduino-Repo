@@ -48,7 +48,7 @@ void loop(){
         sr4.insertData(0xFD & 0b11101111);//minus dot enable -.1 (-0.1) ~ -.9 (-0.9) Display
     }
     else if(Temperature<0.0){
-        dTemp=int(-Temperature);
+        dTemp=int(-1*Temperature);
         sr4.insertData(0xFD);//minus -1 ~ -9 Could Display. 
         //if temperature colder than -9 Degree Celcus, then 7-Seg LED is Display Only FIRST DIGIT
     }
